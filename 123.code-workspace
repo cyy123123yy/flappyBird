@@ -1,0 +1,56 @@
+{
+	"folders": [
+		{
+			"name": "03-课堂案例",
+			"path": "D:\\web第二阶段\\03-课堂案例"
+		},
+		{
+			"path": "D:\\web\\day01"
+		},
+		{
+			"path": "D:\\web\\day03"
+		},
+		{
+			"path": "D:\\web\\ggl"
+		},
+		{
+			"path": "C:\\Users\\Public\\Nwt\\cache\\recv\\主讲机\\day04"
+		},
+		{
+			"path": "D:\\web\\day05"
+		},
+		{
+			"path": "D:\\web\\day06"
+		},
+		{
+			"path": "D:\\web\\day07"
+		},
+		{
+			"path": "D:\\web\\music"
+		},
+		{
+			"path": "D:\\web\\day08"
+		},
+		{
+			"path": "D:\\web\\day09"
+		},
+		{
+			"path": "D:\\web\\day10"
+		},
+		{
+			"path": "D:\\web\\weekday"
+		},
+		{
+			"path": "D:\\web\\day11"
+		},
+		{
+			"path": "D:\\web\\day12"
+		},
+		{
+			"path": "D:\\NodeJs"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "NodeJs"
+	}
+}
