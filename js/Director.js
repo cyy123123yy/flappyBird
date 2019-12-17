@@ -1,6 +1,7 @@
 import { DataStore } from "./base/DataStore.js";
 import { UpPipe } from "./runtime/UpPipe.js";
 import { DownPipe } from "./runtime/DownPipe.js";
+ import { Birds } from './player/Birds.js';
 //导演类，控制游戏的逻辑
 export class Director{
     constructor(){
@@ -39,6 +40,8 @@ export class Director{
         const birds = this.dataStore.get('birds');
         const land = this.dataStore.get('land');
         const pipes = this.dataStore.get('pipes');
+        const score = this.dataStore.get('score');
+       
 
         //小鸟撞击
         if(birds.birdsY[0]<0||birds.birdsY[0]+birds.birdsheight[0]>land.y){
@@ -67,6 +70,12 @@ export class Director{
                 this.isGameOver = true;
                 return ;
             }
+        }
+            //加分：小鸟的左边大于水管的右边且处于加分的状态
+          if(birds.birdsX[0]>pipes[0].x+pipes[0].width && score.canAdd){
+            score.canAdd = false;
+            score.scoreNum++;
+          
 
         }
     }
@@ -88,18 +97,34 @@ export class Director{
         if(pipes[0].x+pipes[0].width<0 && pipes.length==4){
             pipes.shift();
             pipes.shift();
+            this.dataStore.get('score').canAdd = true;
 
         }
         //遍历pipes,并画图
         pipes.forEach(p=>{
             p.draw();
-        })
+        });
         this.dataStore.get("birds").draw();
+
+        this.dataStore.get('score').draw();
+
         this.dataStore.get("land").draw();
        this.id = requestAnimationFrame(()=>this.run());
     //    cancelAnimationFrame();
     }else{
-       
+      //解决安卓手机花屏问题
+         this.dataStore.get('background').draw();
+         this.dataStore.get('pipes').forEach(p => {
+           p.draw();
+         });
+           this.dataStore.get("birds").draw();
+           this.dataStore.get('score').draw();
+           this.dataStore.get("land").draw();
+          this.dataStore.get('startButton').draw();
+      //清除id
+      cancelAnimationFrame(this.id);
+      //alert(游戏结束)
+       this.dataStore.destroy();
     }
        }
 }

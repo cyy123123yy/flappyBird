@@ -4,6 +4,8 @@ import { Background } from "./js/runtime/Background.js";
 import { Director } from "./js/Director.js";
 import { Land } from "./js/runtime/Land.js";
 import { Birds } from "./js/player/Birds.js";
+import { Score } from './js/player/Score.js';
+import {StartButton} from './js/player/StrtButton.js';
 
 export class Main{
     constructor(){
@@ -39,11 +41,13 @@ export class Main{
     }
     //初始化游戏数据
     init(){
+      this.director.isGameOver = false;
         this.dataStore
                 .put('background',new Background())
                 .put("land",new Land())
                 .put("pipes",[])
                 .put("birds",new Birds())
+                .put('score',new Score())
         this.addClick();
         this.director.createPipes();
         this.director.run();        
@@ -57,7 +61,9 @@ export class Main{
             //2.游戏进行中，点击小鸟向上一段距离
             if(this.director.isGameOver){
                 //游戏结束
+                
              this.init();
+              // console.log(123);
             }else{
                 //游戏进行中 小鸟上飞一短距离
                 this.director.birdsEvent();
